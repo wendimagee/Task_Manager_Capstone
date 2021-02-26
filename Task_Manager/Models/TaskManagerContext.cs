@@ -22,6 +22,7 @@ namespace Task_Manager.Models
         public virtual DbSet<AspNetUserRoles> AspNetUserRoles { get; set; }
         public virtual DbSet<AspNetUserTokens> AspNetUserTokens { get; set; }
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
+        public virtual DbSet<TaskList> TaskList { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -130,6 +131,20 @@ namespace Task_Manager.Models
                 entity.Property(e => e.NormalizedUserName).HasMaxLength(256);
 
                 entity.Property(e => e.UserName).HasMaxLength(256);
+            });
+
+            modelBuilder.Entity<TaskList>(entity =>
+            {
+                entity.Property(e => e.AssignedEmployee).HasMaxLength(450);
+
+                entity.Property(e => e.DueDate).HasColumnType("datetime");
+
+                entity.Property(e => e.TaskDescription).HasMaxLength(300);
+
+                entity.HasOne(d => d.AssignedEmployeeNavigation)
+                    .WithMany(p => p.TaskList)
+                    .HasForeignKey(d => d.AssignedEmployee)
+                    .HasConstraintName("FK__TaskList__Assign__5FB337D6");
             });
 
             OnModelCreatingPartial(modelBuilder);

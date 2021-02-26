@@ -11,6 +11,7 @@ namespace Task_Manager.Models
             AspNetUserLogins = new HashSet<AspNetUserLogins>();
             AspNetUserRoles = new HashSet<AspNetUserRoles>();
             AspNetUserTokens = new HashSet<AspNetUserTokens>();
+            TaskList = new HashSet<TaskList>();
         }
 
         public string Id { get; set; }
@@ -33,5 +34,6 @@ namespace Task_Manager.Models
         public virtual ICollection<AspNetUserLogins> AspNetUserLogins { get; set; }
         public virtual ICollection<AspNetUserRoles> AspNetUserRoles { get; set; }
         public virtual ICollection<AspNetUserTokens> AspNetUserTokens { get; set; }
+        public virtual ICollection<TaskList> TaskList { get; set; }
     }
 }

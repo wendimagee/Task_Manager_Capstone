@@ -76,7 +76,6 @@ C:\Users\wendi\source\repos\Task_Manager\Task_Manager\obj\Debug\netcoreapp3.1\Ta
 C:\Users\wendi\source\repos\Task_Manager\Task_Manager\obj\Debug\netcoreapp3.1\Task_Manager.RazorCoreGenerate.cache
 C:\Users\wendi\source\repos\Task_Manager\Task_Manager\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
 C:\Users\wendi\source\repos\Task_Manager\Task_Manager\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
-C:\Users\wendi\source\repos\Task_Manager\Task_Manager\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\wendi\source\repos\Task_Manager\Task_Manager\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\wendi\source\repos\Task_Manager\Task_Manager\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\wendi\source\repos\Task_Manager\Task_Manager\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
@@ -90,3 +89,4 @@ C:\Users\wendi\source\repos\Task_Manager\Task_Manager\obj\Debug\netcoreapp3.1\Ta
 C:\Users\wendi\source\repos\Task_Manager\Task_Manager\obj\Debug\netcoreapp3.1\Task_Manager.dll
 C:\Users\wendi\source\repos\Task_Manager\Task_Manager\obj\Debug\netcoreapp3.1\Task_Manager.pdb
 C:\Users\wendi\source\repos\Task_Manager\Task_Manager\obj\Debug\netcoreapp3.1\Task_Manager.genruntimeconfig.cache
+C:\Users\wendi\source\repos\Task_Manager\Task_Manager\obj\Debug\netcoreapp3.1\Razor\Views\Home\TaskList.cshtml.g.cs
