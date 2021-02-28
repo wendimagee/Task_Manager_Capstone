@@ -7,17 +7,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Task_Manager.Data;
 using Task_Manager.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace Task_Manager.Controllers
 {
     public class HomeController : Controller
     {
-        //private readonly TaskManagerContext _taskDB;
 
-        //public HomeController(TaskManagerContext taskContext)
-        //{
-        //    _taskDB = taskContext;
-        //}
         public IActionResult Index()
         {
             return View();

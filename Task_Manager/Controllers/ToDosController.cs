@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Task_Manager.Models;
+
+
 
 namespace Task_Manager.Controllers
 {
@@ -17,17 +21,30 @@ namespace Task_Manager.Controllers
         {
             _context = context;
         }
+        //get currently logged in user
+        public class AccountController : Controller
+        {
+            private readonly UserManager<IdentityUser> _userManager;
+
+            public AccountController(UserManager<IdentityUser> userManager)
+            {
+                _userManager = userManager;
+            }
+
+            [HttpGet]
+            public async Task<string> GetCurrentUserId()
+            {
+                IdentityUser usr = await GetCurrentUserAsync();
+                return usr?.Id;
+            }
+
+            private Task<IdentityUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
+        }
 
         // GET: ToDos
         public async Task<IActionResult> Index()
         {
-            return View(await _context.ToDos.ToListAsync());
-        }
-
-        // GET: ToDos/Details/5
-        public async Task<IActionResult> Details(ToDo toDos)
-        {
-            return View(toDos);
+                return View(await _context.ToDos.ToListAsync());
         }
 
         // GET: ToDos/Create
@@ -40,14 +57,22 @@ namespace Task_Manager.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,TaskDescription,CompletionStatus,DueDate")] ToDos toDo)
+        [Authorize]
+        public async Task<IActionResult> Create([Bind("Id,TaskDescription,CompletionStatus,DueDate,TaskUser")] ToDos toDo)
         {
+
+            ////AspNetUsers newUser = _context.GetUserAsync(HttpContext.User);
+            //string userName = User.Identity.Name;
+            // AspNetUsers currentUser = User.Identity.FindByName(userName);
+            ////string name = User.Identity.Name;
+            //toDo.TaskUser = newUser.UserName;
+            ////string userId = AspNetUsers.Id;
+            //toDo.TaskUserNavigation = newUser;
             if (ModelState.IsValid)
             {
                 _context.ToDos.Add(toDo);
                 _context.SaveChanges();
-                return RedirectToAction("Details");
+                return RedirectToAction("Index");
             }
             return View(toDo);
         }
