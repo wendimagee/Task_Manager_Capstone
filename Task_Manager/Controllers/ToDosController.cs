@@ -25,21 +25,9 @@ namespace Task_Manager.Controllers
         }
 
         // GET: ToDos/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(ToDo toDos)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var toDo = await _context.ToDos
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (toDo == null)
-            {
-                return NotFound();
-            }
-
-            return View(toDo);
+            return View(toDos);
         }
 
         // GET: ToDos/Create
