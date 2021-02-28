@@ -5,23 +5,48 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Task_Manager.Data;
 using Task_Manager.Models;
 
 namespace Task_Manager.Controllers
 {
     public class HomeController : Controller
     {
+        //private readonly TaskManagerContext _taskDB;
 
+        //public HomeController(TaskManagerContext taskContext)
+        //{
+        //    _taskDB = taskContext;
+        //}
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult TaskList()
-        {
-            return View();
-        }
+        //public IActionResult TaskList()
+        //{
+        //    return View();
+        //}
 
+        //public IActionResult Create()
+        //{
+        //    return View();
+        //}
+
+        //[HttpPost]
+        //public IActionResult Create(TaskList job)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        _taskDB.TaskList.Add(job);
+        //        _taskDB.SaveChanges();
+        //        return RedirectToAction("TaskList");
+        //    }
+        //    else
+        //    {
+        //        return View();
+        //    }
+        //}
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

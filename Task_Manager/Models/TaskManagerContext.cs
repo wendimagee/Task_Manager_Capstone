@@ -2,6 +2,10 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
+// Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
+// If you have enabled NRTs for your project, then un-comment the following line:
+// #nullable disable
+
 namespace Task_Manager.Models
 {
     public partial class TaskManagerContext : DbContext
@@ -22,7 +26,7 @@ namespace Task_Manager.Models
         public virtual DbSet<AspNetUserRoles> AspNetUserRoles { get; set; }
         public virtual DbSet<AspNetUserTokens> AspNetUserTokens { get; set; }
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
-        public virtual DbSet<TaskList> TaskList { get; set; }
+        public virtual DbSet<ToDos> ToDos { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -133,18 +137,18 @@ namespace Task_Manager.Models
                 entity.Property(e => e.UserName).HasMaxLength(256);
             });
 
-            modelBuilder.Entity<TaskList>(entity =>
+            modelBuilder.Entity<ToDos>(entity =>
             {
-                entity.Property(e => e.AssignedEmployee).HasMaxLength(450);
-
                 entity.Property(e => e.DueDate).HasColumnType("datetime");
 
                 entity.Property(e => e.TaskDescription).HasMaxLength(300);
 
-                entity.HasOne(d => d.AssignedEmployeeNavigation)
-                    .WithMany(p => p.TaskList)
-                    .HasForeignKey(d => d.AssignedEmployee)
-                    .HasConstraintName("FK__TaskList__Assign__5FB337D6");
+                entity.Property(e => e.TaskUser).HasMaxLength(450);
+
+                entity.HasOne(d => d.TaskUserNavigation)
+                    .WithMany(p => p.ToDos)
+                    .HasForeignKey(d => d.TaskUser)
+                    .HasConstraintName("FK__ToDos__TaskUser__75A278F5");
             });
 
             OnModelCreatingPartial(modelBuilder);

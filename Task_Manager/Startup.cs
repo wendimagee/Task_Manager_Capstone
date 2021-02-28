@@ -12,11 +12,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Task_Manager.Data;
+using Task_Manager.Models;
 
 namespace Task_Manager
 {
     public class Startup
     {
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -27,9 +29,13 @@ namespace Task_Manager
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var connection = "Server=.\\SQLExpress;Database=TaskManager;Trusted_Connection=True;ConnectRetryCount = 0; ";
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<TaskManagerContext>(options =>
+                options.UseSqlServer(connection));
+
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();

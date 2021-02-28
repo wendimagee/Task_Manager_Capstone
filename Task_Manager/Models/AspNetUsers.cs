@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 
+// Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
+// If you have enabled NRTs for your project, then un-comment the following line:
+// #nullable disable
+
 namespace Task_Manager.Models
 {
     public partial class AspNetUsers
@@ -11,7 +15,7 @@ namespace Task_Manager.Models
             AspNetUserLogins = new HashSet<AspNetUserLogins>();
             AspNetUserRoles = new HashSet<AspNetUserRoles>();
             AspNetUserTokens = new HashSet<AspNetUserTokens>();
-            TaskList = new HashSet<TaskList>();
+            ToDos = new HashSet<ToDos>();
         }
 
         public string Id { get; set; }
@@ -34,6 +38,6 @@ namespace Task_Manager.Models
         public virtual ICollection<AspNetUserLogins> AspNetUserLogins { get; set; }
         public virtual ICollection<AspNetUserRoles> AspNetUserRoles { get; set; }
         public virtual ICollection<AspNetUserTokens> AspNetUserTokens { get; set; }
-        public virtual ICollection<TaskList> TaskList { get; set; }
+        public virtual ICollection<ToDos> ToDos { get; set; }
     }
 }
